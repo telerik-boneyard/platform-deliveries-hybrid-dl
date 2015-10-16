@@ -44,10 +44,10 @@ app.models.loading = (function() {
     var _initializeData = function() {
         _showSection('initializing-data');
         
-        _createContentTypes()
+        _createDemoDataConnector()
+        .then(_createDeliveriesContentTypeFromDataLink)
+        .then(_createDeliveriesFieldsFromDataLink)
         .then(_createUsers)
-        .then(_createData)
-        .then(_createFiles)
         .then(function() {
             _showSection('initialize-data-completed');
         })
@@ -57,62 +57,133 @@ app.models.loading = (function() {
         
     };
     
-    var _createContentTypes = function() {
-        var types = sampleData.ContentTypes;
+    var _createDemoDataConnector = function() {
         
-        var type = types['DeliveryOrder'];
-        return _createContentType('DeliveryOrder', type);
+        var dataLinkDefinition = {
+            "Id": "3c4459e0-6846-11e5-853a-73016a741697",
+            "Name": "DeliveriesSampleDataConnector",
+            "Title": "DeliveriesSampleDataConnector",
+            "Type": 1,
+            "CustomSettings": {
+                "isDemo": true
+            }
+        };
+        var url = everliveBaseUrl + 'Metadata/Applications/' + Config.ApiKey + '/DataLinks';
+        
+        return _ajaxRequestPromise(url, dataLinkDefinition);
     };
     
-    var _createContentType = function(typeName, typeDefinition) {
-        var fields = typeDefinition.Fields;
-        delete typeDefinition.Fields;
-        
+    var _createDeliveriesContentTypeFromDataLink = function() {
+        var typeDefinition = {
+            "Name": "DeliveryOrder",
+            "Title": "DeliveryOrder",
+            "SourceTypeName": "dbo.Deliveries",
+            "DataLinkId": "3c4459e0-6846-11e5-853a-73016a741697"
+        };
         var url = everliveBaseUrl + 'Metadata/Applications/' + Config.ApiKey + '/Types';
         return _ajaxRequestPromise(url, typeDefinition)
-            .then(
-                function() {
-                    return _createContentTypeFields(typeName, fields);
-                }
-            );
     };
     
-    var _createContentTypeFields = function(typeName, fields) {
-        var url = everliveBaseUrl + 'Metadata/Applications/' + Config.ApiKey + '/Types/' + typeName + '/Fields';
+    var _createDeliveriesFieldsFromDataLink = function() {
+        var fields = [
+            {
+                "Id":null,
+                "Name":"Comments",
+                "Title":"Comments",
+                "SourceFieldName":"Comments",
+                "DataType":1,
+                "IsReadOnly":false
+            },
+            {
+                "Id":null,
+                "Name":"CreatedAt",
+                "Title":"CreatedAt",
+                "SourceFieldName":"CreatedAt",
+                "DataType":3,
+                "IsReadOnly":false
+            },
+            {
+                "Id":null,
+                "Name":"DeliveryAddressCity",
+                "Title":"DeliveryAddressCity",
+                "SourceFieldName":"DeliveryAddressCity",
+                "DataType":1,
+                "IsReadOnly":false
+            },
+            {
+                "Id":null,
+                "Name":"DeliveryAddressLine1",
+                "Title":"DeliveryAddressLine1",
+                "SourceFieldName":"DeliveryAddressLine1",
+                "DataType":1,
+                "IsReadOnly":false
+            },
+            {
+                "Id":null,
+                "Name":"DeliveryAddressLine2",
+                "Title":"DeliveryAddressLine2",
+                "SourceFieldName":"DeliveryAddressLine2",
+                "DataType":1,
+                "IsReadOnly":false
+            },
+            {
+                "Id":null,
+                "Name":"DeliveryAddressPostcode",
+                "Title":"DeliveryAddressPostcode",
+                "SourceFieldName":"DeliveryAddressPostcode",
+                "DataType":1,
+                "IsReadOnly":false
+            },
+            {
+                "Id":null,
+                "Name":"DeliveryItem",
+                "Title":"DeliveryItem",
+                "SourceFieldName":"DeliveryItem",
+                "DataType":1,
+                "IsReadOnly":false
+            },
+            {
+                "Id":null,
+                "Name":"DeliveryItemType",
+                "Title":"DeliveryItemType",
+                "SourceFieldName":"DeliveryItemType",
+                "DataType":1,
+                "IsReadOnly":false
+            },
+            {
+                "Id":null,
+                "Name":"DeliveryName",
+                "Title":"DeliveryName",
+                "SourceFieldName":"DeliveryName",
+                "DataType":1,
+                "IsReadOnly":false
+            },
+            {
+                "Id":null,
+                "Name":"ModifiedAt",
+                "Title":"ModifiedAt",
+                "SourceFieldName":"ModifiedAt",
+                "DataType":3,
+                "IsReadOnly":false
+            },
+            {
+                "Id":null,
+                "Name":"Status",
+                "Title":"Status",
+                "SourceFieldName":"Status",
+                "DataType":2,
+                "IsReadOnly":false
+            }
+        ];
+        var url = everliveBaseUrl + 'Metadata/Applications/' + Config.ApiKey + '/Types/DeliveryOrder/Fields';
+        
         return _ajaxRequestPromise(url, fields);
-    };
-    
-    var _createData = function() {
-        var data = sampleData.Data.DeliveryOrder;
-        var url = everliveBaseUrl + Config.ApiKey + '/DeliveryOrder';
-        return _ajaxRequestPromise(url, data);
-    };
+    }
     
     var _createUsers = function() {
         var users = sampleData.Users;
         var url = everliveBaseUrl + Config.ApiKey + '/Users';
         return _ajaxRequestPromise(url, users);
-    };
-    
-    var _createFiles = function() {
-        var files = sampleData.Data.Files;
-        var url = everliveBaseUrl + Config.ApiKey + '/Files';
-        return _ajaxRequestPromise(url, files[0])
-        .then(function() {
-            return _ajaxRequestPromise(url, files[1]);
-        });
-    }
-    
-    var _get = function(url, success, error) {
-        $.ajax({
-            method: "GET",
-            url: url,
-            headers: {
-                'Authorization': 'masterkey ' + Config.MasterKey
-            },
-            success: success,
-            error: error
-        });    
     };
     
     var _ajaxRequestPromise = function(url, data) {
