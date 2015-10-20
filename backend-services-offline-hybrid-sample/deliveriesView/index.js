@@ -59,20 +59,6 @@ app.models.deliveriesView = {
             };
         })();
 
-        var buildHeaders = function() {
-                var headers = {};
-                if (app.data.defaultprovider.isOnline()) {
-                    headers["X-Everlive-Expand"] = JSON.stringify({
-                        Image: {
-                            TargetTypeName: 'Files',
-                            ReturnAs: 'DeliveryImage'
-                        }
-                    });
-                }
-                
-                return headers;
-            }
-
         app.models.deliveriesView.deliveriesViewList = (function() {
             //The default data provider for the app, an instance of the Telerik Backend Services SDK
             var dataProvider = app.data.defaultprovider;
@@ -83,10 +69,7 @@ app.models.deliveriesView = {
                 serverFiltering: true,
                 transport: {
                     typeName: 'DeliveryOrder',
-                    dataProvider: dataProvider,
-                    read: {
-                        headers: buildHeaders()
-                    }
+                    dataProvider: dataProvider
                 },
 
                 schema: {

@@ -58,123 +58,21 @@ app.models.loading = (function() {
     };
     
     var _createDemoDataConnector = function() {
-        
-        var dataLinkDefinition = {
-            "Id": "3c4459e0-6846-11e5-853a-73016a741697",
-            "Name": "DeliveriesSampleDataConnector",
-            "Title": "DeliveriesSampleDataConnector",
-            "Type": 1,
-            "CustomSettings": {
-                "isDemo": true
-            }
-        };
+        var dataLinkDefinition = sampleData.SampleDataLinkDefinition;
         var url = everliveBaseUrl + 'Metadata/Applications/' + Config.ApiKey + '/DataLinks';
         
         return _ajaxRequestPromise(url, dataLinkDefinition);
     };
     
-    var _createDeliveriesContentTypeFromDataLink = function() {
-        var typeDefinition = {
-            "Name": "DeliveryOrder",
-            "Title": "DeliveryOrder",
-            "SourceTypeName": "dbo.Deliveries",
-            "DataLinkId": "3c4459e0-6846-11e5-853a-73016a741697"
-        };
+    var _createDeliveriesContentTypeFromDataLink = function(dataLinkResult) {
+        var typeDefinition = sampleData.DeliveriesTypeDefinition;
+        typeDefinition.DataLinkId = dataLinkResult.Id;
         var url = everliveBaseUrl + 'Metadata/Applications/' + Config.ApiKey + '/Types';
         return _ajaxRequestPromise(url, typeDefinition)
     };
     
     var _createDeliveriesFieldsFromDataLink = function() {
-        var fields = [
-            {
-                "Id":null,
-                "Name":"Comments",
-                "Title":"Comments",
-                "SourceFieldName":"Comments",
-                "DataType":1,
-                "IsReadOnly":false
-            },
-            {
-                "Id":null,
-                "Name":"CreatedAt",
-                "Title":"CreatedAt",
-                "SourceFieldName":"CreatedAt",
-                "DataType":3,
-                "IsReadOnly":false
-            },
-            {
-                "Id":null,
-                "Name":"DeliveryAddressCity",
-                "Title":"DeliveryAddressCity",
-                "SourceFieldName":"DeliveryAddressCity",
-                "DataType":1,
-                "IsReadOnly":false
-            },
-            {
-                "Id":null,
-                "Name":"DeliveryAddressLine1",
-                "Title":"DeliveryAddressLine1",
-                "SourceFieldName":"DeliveryAddressLine1",
-                "DataType":1,
-                "IsReadOnly":false
-            },
-            {
-                "Id":null,
-                "Name":"DeliveryAddressLine2",
-                "Title":"DeliveryAddressLine2",
-                "SourceFieldName":"DeliveryAddressLine2",
-                "DataType":1,
-                "IsReadOnly":false
-            },
-            {
-                "Id":null,
-                "Name":"DeliveryAddressPostcode",
-                "Title":"DeliveryAddressPostcode",
-                "SourceFieldName":"DeliveryAddressPostcode",
-                "DataType":1,
-                "IsReadOnly":false
-            },
-            {
-                "Id":null,
-                "Name":"DeliveryItem",
-                "Title":"DeliveryItem",
-                "SourceFieldName":"DeliveryItem",
-                "DataType":1,
-                "IsReadOnly":false
-            },
-            {
-                "Id":null,
-                "Name":"DeliveryItemType",
-                "Title":"DeliveryItemType",
-                "SourceFieldName":"DeliveryItemType",
-                "DataType":1,
-                "IsReadOnly":false
-            },
-            {
-                "Id":null,
-                "Name":"DeliveryName",
-                "Title":"DeliveryName",
-                "SourceFieldName":"DeliveryName",
-                "DataType":1,
-                "IsReadOnly":false
-            },
-            {
-                "Id":null,
-                "Name":"ModifiedAt",
-                "Title":"ModifiedAt",
-                "SourceFieldName":"ModifiedAt",
-                "DataType":3,
-                "IsReadOnly":false
-            },
-            {
-                "Id":null,
-                "Name":"Status",
-                "Title":"Status",
-                "SourceFieldName":"Status",
-                "DataType":2,
-                "IsReadOnly":false
-            }
-        ];
+        var fields = sampleData.DeliveriesFieldDefinitions;
         var url = everliveBaseUrl + 'Metadata/Applications/' + Config.ApiKey + '/Types/DeliveryOrder/Fields';
         
         return _ajaxRequestPromise(url, fields);
@@ -197,8 +95,8 @@ app.models.loading = (function() {
                     'Content-Type': 'application/json'
                 },
                 data: JSON.stringify(data),
-                success: function() {
-                    resolve();
+                success: function(createResult) {
+                    resolve(createResult.Result);
                 },
                 error: function() {
                     resolve();
