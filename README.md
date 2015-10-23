@@ -14,6 +14,10 @@ This repository contains the Telerik Deliveries app for PhoneGap/Cordova. It is 
 
 The detailed list of showcased features includes:
 
+* Data Connectors
+  * Create a Data Connector from a demo Data Link Server
+  * Create a content type from a SQL table
+  * Connect the application to data from a table in a relational database
 * Offline Support
   * Switching between online and offline mode
   * Data synchronization
@@ -35,7 +39,7 @@ Login Screen|Main Menu|All Orders, Offline
 
 Before you begin, you need to ensure that you have the following:
 
-- **An active Telerik Platform account**
+- **An active Telerik Platform account with support for Data Connectors**
 Ensure that you can log in to a Telerik Platform account. This can be a free trial account. Depending on your license you may not be able to use all app features. For more information on what is included in the different editions, check out the pricing page. All features included in the sample app work during the free trial period.
 
 - **Telerik AppBuilder** The sample app requires Telerik AppBuilder to run. This can be the in-browser client, the desktop client or the extension for Visual Studio.
@@ -63,7 +67,7 @@ Once the app is configured, you can run it either on a real device or in the Tel
 
 To run it, follow the steps in the product's documentation: [Running Apps on Devices](http://docs.telerik.com/platform/appbuilder/testing-your-app/running-on-devices/working-with-devices).
 
-After you run the app successfully, it guides you through a data initialization process which builds the necessary data structure in your Backend Services project and then creates sample data.
+After you run the app successfully, it guides you through a data initialization process which builds the necessary data structure in your Backend Services project and then creates sample data. In this case, the app will create a Data Connector in your project and a content type from the underlying relational database table.
 
 For your convenience, the app always displays whether it works online or offline. You can simulate lack of Internet connection from the AppBuilder simulator. If you are testing on a device, you have to turn off the WiFi and the data connection to go in offline mode.
 
@@ -78,3 +82,5 @@ One way to test the app is to follow this work flow:
 4. Change an existing item (enter comment or change status).
 5. Turn on the Internet connection.<br>
 	Result: Your change is synchronized to the cloud and you can see it in the Telerik Platform portal.
+
+> You can toggle the network connection mode from the simulator as explained [here](http://docs.telerik.com/platform/appbuilder/testing-your-app/running-apps-in-simulator/simulate-network)
