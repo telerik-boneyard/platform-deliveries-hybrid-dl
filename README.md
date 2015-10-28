@@ -1,5 +1,5 @@
 
-# Telerik Deliveries Sample App for PhoneGap/Cordova
+# Telerik Deliveries Enterprise Sample App for PhoneGap/Cordova
 
 <a href="https://platform.telerik.com/#appbuilder/clone/https://github.com/telerik/platform-deliveries-hybrid-dl" target="_blank"><img src="http://docs.telerik.com/platform/samples/images/try-in-appbuilder.png" alt="Try in AppBuilder" title="Try in Telerik Platform" /></a> <a href="https://github.com/telerik/platform-deliveries-hybrid-dl" target="_blank"><img style="padding-left:20px" src="http://docs.telerik.com/platform/samples/images/get-github.png" alt="Get from GitHub" title="Get from GitHub"></a>
 
@@ -7,17 +7,18 @@
 * [Requirements](#requirements)
 * [Configuration](#configuration)
 * [Running the Sample](#running-the-sample)
+* [Testing the Sample](#test-the-sample)
 
 ## Overview
 
-This repository contains the Telerik Deliveries app for PhoneGap/Cordova. It is a sample mobile app demonstrating how to integrate and use the [Offline Support](http://docs.telerik.com/platform/backend-services/javascript/offline-support/introduction) and [Caching](http://docs.telerik.com/platform/backend-services/javascript/caching/introduction) features provided by the [Telerik Backend Services JavaScript SDK](http://docs.telerik.com/platform/backend-services/javascript/getting-started-javascript-sdk).
+This repository contains the Telerik Deliveries Enterprise app for PhoneGap/Cordova. It is a sample mobile app demonstrating how to connect to data in a corporate database with added [Offline Support](http://docs.telerik.com/platform/backend-services/javascript/offline-support/introduction) and [Caching Support](http://docs.telerik.com/platform/backend-services/javascript/caching/introduction).
 
 The detailed list of showcased features includes:
 
 * Data Connectors
-  * Create a Data Connector from a demo Data Link Server
-  * Create a content type from a SQL table
-  * Connect the application to data from a table in a relational database
+  * Creating a Data Connector from a demo Data Link Server
+  * Creating a content type from a Microsoft SQL Server table
+  * Connecting the application to the SQL data
 * Offline Support
   * Switching between online and offline mode
   * Data synchronization
@@ -39,8 +40,8 @@ Login Screen|Main Menu|All Orders, Offline
 
 Before you begin, you need to ensure that you have the following:
 
-- **An active Telerik Platform account with support for Data Connectors**
-Ensure that you can log in to a Telerik Platform account. This can be a free trial account. Depending on your license you may not be able to use all app features. For more information on what is included in the different editions, check out the pricing page. All features included in the sample app work during the free trial period.
+- **An active Telerik Platform Enterprise account**
+Ensure that you can log in to a Telerik Platform account with Enterprise subscription. This can be a free Enterprise trial account. All features included in the sample app work during the free trial period.
 
 - **Telerik AppBuilder** The sample app requires Telerik AppBuilder to run. This can be the in-browser client, the desktop client or the extension for Visual Studio.
 
@@ -67,7 +68,9 @@ Once the app is configured, you can run it either on a real device or in the Tel
 
 To run it, follow the steps in the product's documentation: [Running Apps on Devices](http://docs.telerik.com/platform/appbuilder/testing-your-app/running-on-devices/working-with-devices).
 
-After you run the app successfully, it guides you through a data initialization process which builds the necessary data structure in your Backend Services project and then creates sample data. In this case, the app will create a Data Connector in your project and a content type from the underlying relational database table.
+After you run the app successfully, it guides you through a data initialization process. It includes setting up a Data Connector from the Demo DataLink server and creating a content type from an underlying relational database table.
+
+## Testing the Sample
 
 For your convenience, the app always displays whether it works online or offline. You can simulate lack of Internet connection from the AppBuilder simulator. If you are testing on a device, you have to turn off the WiFi and the data connection to go in offline mode.
 
