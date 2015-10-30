@@ -1,7 +1,7 @@
-title: Deliveries for Cordova
-slug: sample-backend-services-deliveries-hybrid
+title: Deliveries Enterprise for Cordova
+slug: sample-backend-services-enterprise-deliveries-hybrid
 position: 1
 publish: true
-page_title: "Deliveries Sample App for PhoneGap/Cordova | Telerik Platform"
-description: A simple hybrid mobile app demonstrating how to make use of Offline Support and Caching provided by the Backend Services JavaScript SDK.
-tags: Sample App, Application, Windows Phone, C#, dotnet, .NET, BaaS, mBaaS, Social, Analytics, Social Login
+page_title: "Deliveries Enterprise Sample App for PhoneGap/Cordova | Telerik Platform"
+description: A simple mobile app demonstrating how to connect to a relational database from the cloud and add Offline and Caching Support to it.
+tags: Sample App, Application, Windows Phone, Android, iOS, iPhone, iPad, JavaScript, hybrid, Cordova, offline, caching, Data Connectors, DataLink Server 
