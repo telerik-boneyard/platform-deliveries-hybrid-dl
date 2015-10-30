@@ -68,7 +68,7 @@ Once the app is configured, you can run it either on a real device or in the Tel
 
 To run it, follow the steps in the product's documentation: [Running Apps on Devices](http://docs.telerik.com/platform/appbuilder/testing-your-app/running-on-devices/working-with-devices).
 
-After you run the app successfully, it guides you through a data initialization process. It includes setting up a Data Connector from the Demo DataLink server and creating a content type from an underlying relational database table.
+After you run the app successfully, it guides you through a data initialization process. It includes setting up a Data Connector from the Demo Data Link server and creating a content type from an underlying relational database table.
 
 ## Testing the Sample
 
