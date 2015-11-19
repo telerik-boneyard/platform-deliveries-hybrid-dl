@@ -1,7 +1,7 @@
-title: Deliveries Enterprise for Cordova
+title: Deliveries Enterprise
 slug: sample-backend-services-enterprise-deliveries-hybrid
 position: 1
 publish: true
 page_title: "Deliveries Enterprise Sample App for PhoneGap/Cordova | Telerik Platform"
-description: A simple mobile app demonstrating how to connect to a relational database from the cloud and add Offline and Caching Support to it.
+description: A simple mobile demo app showing how to connect to a relational database from the cloud and add Offline and Caching Support to the data.
 tags: Sample App, Application, Windows Phone, Android, iOS, iPhone, iPad, JavaScript, hybrid, Cordova, offline, caching, Data Connectors, DataLink Server 
