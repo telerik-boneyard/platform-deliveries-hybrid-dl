@@ -9,7 +9,7 @@
 * [Running the Sample](#running-the-sample)
 * [Testing the Sample](#test-the-sample)
 
-## Overview
+# Overview
 
 This repository contains the Telerik Deliveries Enterprise app for PhoneGap/Cordova. It is a sample mobile app demonstrating how to connect to data in a corporate database with added [Offline Support](http://docs.telerik.com/platform/backend-services/javascript/offline-support/introduction) and [Caching Support](http://docs.telerik.com/platform/backend-services/javascript/caching/introduction).
 
@@ -30,13 +30,13 @@ The detailed list of showcased features includes:
 
 Similarly to all other Telerik hybrid apps, Telerik Deliveries runs on iOS, Android, and Windows Phone 8.
 
-## Screenshots
+# Screenshots
 
 Login Screen|Main Menu|All Orders, Offline
 ---|---|---
 ![Login Screen](https://raw.githubusercontent.com/telerik/platform-deliveries-hybrid-dl/master/screenshots/login-screen.png)|![Main Menu](https://raw.githubusercontent.com/telerik/platform-deliveries-hybrid-dl/master/screenshots/main-menu.png)|![All Orders, device is offline](https://raw.githubusercontent.com/telerik/platform-deliveries-hybrid-dl/master/screenshots/all-orders-offline.png)
 
-## Requirements
+# Requirements
 
 Before you begin, you need to ensure that you have the following:
 
@@ -45,7 +45,7 @@ Ensure that you can log in to a Telerik Platform account with Enterprise subscri
 
 - **Telerik AppBuilder** The sample app requires Telerik AppBuilder to run. This can be the in-browser client, the desktop client or the extension for Visual Studio.
 
-## Configuration
+# Configuration
 
 The Deliveries sample app comes fully functional, but to see it in action you must link it to your own Telerik Platform account.
 
@@ -62,7 +62,7 @@ To do that, set the API Key for your Telerik Backend Services project. This is a
 4. Set the `Config.ApiKey` value to the API key of your Backend Services project.
 5. Set the `Config.MasterKey` value to the API Master Key of your Backend Services project.
 
-## Running the Sample
+# Running the Sample
 
 Once the app is configured, you can run it either on a real device or in the Telerik AppBuilder simulator.
 
@@ -70,7 +70,7 @@ To run it, follow the steps in the product's documentation: [Running Apps on Dev
 
 After you run the app successfully, it guides you through a data initialization process. It includes setting up a Data Connector from the Demo Data Link server and creating a content type from an underlying relational database table.
 
-## Testing the Sample
+# Testing the Sample
 
 For your convenience, the app always displays whether it works online or offline. You can simulate lack of Internet connection from the AppBuilder simulator. If you are testing on a device, you have to turn off the WiFi and the data connection to go in offline mode.
 
