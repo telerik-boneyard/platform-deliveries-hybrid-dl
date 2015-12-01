@@ -11,8 +11,8 @@ app.models.loading = (function() {
         $('#' + sectionId).show();
     };
     
-    var _isApiKeySet = function() {
-        return Config.ApiKey && Config.ApiKey.length === 16;
+    var isAppIdSet = function() {
+        return Config.AppId && Config.AppId.length === 16;
     };
     
     var _isMasterKeySet = function() {
@@ -59,7 +59,7 @@ app.models.loading = (function() {
     
     var _createDemoDataConnector = function() {
         var dataLinkDefinition = sampleData.SampleDataLinkDefinition;
-        var url = everliveBaseUrl + 'Metadata/Applications/' + Config.ApiKey + '/DataLinks';
+        var url = everliveBaseUrl + 'Metadata/Applications/' + Config.AppId + '/DataLinks';
         
         return _ajaxRequestPromise(url, dataLinkDefinition);
     };
@@ -67,20 +67,20 @@ app.models.loading = (function() {
     var _createDeliveriesContentTypeFromDataLink = function(dataLinkResult) {
         var typeDefinition = sampleData.DeliveriesTypeDefinition;
         typeDefinition.DataLinkId = dataLinkResult.Id;
-        var url = everliveBaseUrl + 'Metadata/Applications/' + Config.ApiKey + '/Types';
+        var url = everliveBaseUrl + 'Metadata/Applications/' + Config.AppId + '/Types';
         return _ajaxRequestPromise(url, typeDefinition)
     };
     
     var _createDeliveriesFieldsFromDataLink = function() {
         var fields = sampleData.DeliveriesFieldDefinitions;
-        var url = everliveBaseUrl + 'Metadata/Applications/' + Config.ApiKey + '/Types/DeliveryOrder/Fields';
+        var url = everliveBaseUrl + 'Metadata/Applications/' + Config.AppId + '/Types/DeliveryOrder/Fields';
         
         return _ajaxRequestPromise(url, fields);
     }
     
     var _createUsers = function() {
         var users = sampleData.Users;
-        var url = everliveBaseUrl + Config.ApiKey + '/Users';
+        var url = everliveBaseUrl + Config.AppId + '/Users';
         return _ajaxRequestPromise(url, users);
     };
     
@@ -108,10 +108,9 @@ app.models.loading = (function() {
     
     return {
         onShow: function() {
-            //Check if API key has been set
-            var apiKeySet = _isApiKeySet();
-            if (!apiKeySet) {
-                _showSection('error-no-api-key');
+            //Check if App Id is set
+            if (!isAppIdSet()) {
+                _showSection('error-no-app-id');
             } else {
                 var isOnline = app.isOnline();
                 if (isOnline) {
