@@ -108,9 +108,8 @@ app.models.loading = (function() {
     
     return {
         onShow: function() {
-            //Check if API key has been set
-            var isAppIdSet = isAppIdSet();
-            if (!isAppIdSet) {
+            //Check if App Id is set
+            if (!isAppIdSet()) {
                 _showSection('error-no-app-id');
             } else {
                 var isOnline = app.isOnline();
