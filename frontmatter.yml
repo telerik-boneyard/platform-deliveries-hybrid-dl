@@ -4,4 +4,10 @@ position: 1
 publish: true
 page_title: "Deliveries Enterprise Sample App for PhoneGap/Cordova | Telerik Platform"
 description: A simple mobile demo app showing how to connect to a relational database from the cloud and add Offline and Caching Support to the data.
-tags: Sample App, Application, Windows Phone, Android, iOS, iPhone, iPad, JavaScript, hybrid, Cordova, offline, caching, Data Connectors, DataLink Server 
+tags: Sample App, Application, Windows Phone, Android, iOS, iPhone, iPad, JavaScript, hybrid, Cordova, offline, caching, Data Connectors, DataLink Server
+apis: everlive.constructor everlive.isOnline everlive.online everlive.offline authentication.persist helpers.html everlive.on everlive.syncStart everlive.syncEnd users.login users.logout kendo.application kendo.observable kendo.datasource users.currentUser
+related_resources:
+- "[Introduction to Data Connectors](http://docs.telerik.com/platform/backend-services/javascript/data-connectors/introduction)"
+- "[Initializing Offline Support](http://docs.telerik.com/platform/backend-services/javascript/offline-support/offline-initialization)"
+- "[Selecting an Offline Storage Provider](http://docs.telerik.com/platform/backend-services/javascript/offline-support/offline-storage-provider)"
+- "[Offline Data Synchronization](http://docs.telerik.com/platform/backend-services/javascript/offline-support/offline-synchronization)"
